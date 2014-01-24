@@ -66,3 +66,6 @@ gem 'thin'
 
 # Sferik's Twitter client
 gem 'twitter'
+
+# Easily create/manage daemons for stream schedulin
+gem 'daemons-rails'

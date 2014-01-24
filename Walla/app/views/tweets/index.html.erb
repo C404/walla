@@ -1,0 +1,43 @@
+<h1>Listing tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer account</th>
+      <th>Customer msg</th>
+      <th>Msg url</th>
+      <th>Service page</th>
+      <th>Agent account</th>
+      <th>Bitly</th>
+      <th>Chatter</th>
+      <th>Customer ip</th>
+      <th>Answered url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.customer_account %></td>
+        <td><%= tweet.customer_msg %></td>
+        <td><%= tweet.msg_url %></td>
+        <td><%= tweet.service_page %></td>
+        <td><%= tweet.agent_account %></td>
+        <td><%= tweet.bitly %></td>
+        <td><%= tweet.chatter_id %></td>
+        <td><%= tweet.customer_ip %></td>
+        <td><%= tweet.answered_url %></td>
+        <td><%= link_to 'Show', tweet %></td>
+        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tweet', new_tweet_path %>

@@ -14,10 +14,13 @@ client = Databasedotcom::Client.new(client_id: ENV['SF_CONSUMER_KEY'],
 token = client.authenticate(username: 'julien.ballet.pro@gmail.com',
   password: 'qweasd4242')
 
+puts client.list_sobjects.sort
+
+exit
 Sf = Module.new
 ['User', 'Task'].each do |klass|
   Sf.const_set klass, client.materialize(klass)
 end
 
-puts Sf::User.all.inspect
+
 

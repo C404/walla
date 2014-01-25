@@ -50,10 +50,15 @@ while($running) do
             message:      object.text,
             message_url:  object.url
           }
-          data = JSON.parse(response.body)['tweet']
-          url = "http://localhost:3000/go/#{data['id']}"
-          client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
-            in_reply_to_status: object)
+          if response.status == 201
+            data = JSON.parse(response.body)['tweet']
+            url = "http://localhost:3000/go/#{data['id']}"
+            client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
+              in_reply_to_status: object)
+          else
+            client.update("Désolé @#{object.user.screen_name},#{rand 999}, je ne sais pas comment vous aider",
+              in_reply_to_status: object)
+          end
         end
       when Twitter::DirectMessage
         puts "It's a direct message!"

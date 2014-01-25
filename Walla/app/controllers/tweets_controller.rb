@@ -27,16 +27,14 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
 
-    @tweet.answer_url = AxaDocument.query(@tweet.message).first.url
+    results = AxaDocument.query(@tweet.message)
+    render nothing: true, status: :not_found unless results.any?
+    @tweet.answer_url = results.first.url
 
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render json: @tweet, status: :created }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
+    if @tweet.save
+      render json: @tweet, status: :created
+    else
+      render json: @tweet.errors, status: :unprocessable_entity
     end
   end
 

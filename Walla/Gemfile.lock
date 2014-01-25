@@ -173,7 +173,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   daemons-rails
-  debugger
+  debugger (>= 1.6.5)
   figaro
   geocoder
   geoip

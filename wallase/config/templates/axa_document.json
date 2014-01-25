@@ -1,0 +1,33 @@
+{
+    "axa_document" : {
+        "template" : "*",
+
+        "settings" : {
+            "index" : {
+                "analysis" : {
+                    "analyzer" : {
+                        "axa_analyser" : {
+                            "type" : "snowball",
+                            "language" : "French"
+                        }
+                    }
+                }
+            }
+        },
+
+        "mappings" : {
+            "_default_" : {
+                "_source" : { "enabled" : true }
+            },
+            "axa_document" : {
+                "properties": {
+                    "url" : {
+                        "type" : "string",
+                        "index" : "not_analyzed",
+                        "norms" : { "enabled" : false }
+                    }
+                }
+            }
+        }
+    }
+}

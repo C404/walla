@@ -6,3 +6,8 @@ type axaDocument struct {
 	Body  string   `json:"body"`
 	Alts  []string `json:"alts"`
 }
+
+type question struct {
+	User    string `json:"user"`
+	Message string `json:"message"`
+}

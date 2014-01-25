@@ -7,10 +7,26 @@
                 "analysis" : {
                     "analyzer" : {
                         "axa_analyser" : {
-                            "type" : "snowball",
-                            "language" : "French"
+                            "type" : "custom",
+							"tokenizer" : "standard",
+							"filter" : ["standard", "lowercase", "stop", "asciifolding", "word_delimiter", "eli", "snow"],
+							"stopwords" : ["ayons", "pouvez", "pouvons", "ayez", "axa", "bonjour", "svp", "merci", "dois", "peu", "peut", "peux", "faire"]
                         }
-                    }
+                    },
+					"filter" : {
+						"eli" : {
+							"type" : "elision",
+							"articles" : ["l", "m", "t", "qu", "n", "s", "j", "d"]
+						},
+						"fr_FR" : {
+							"type" : "hunspell",
+							"locale" : "fr_FR"
+						},
+						"snow" : {
+							"type" : "snowball",
+                            "language" : "French"
+						}
+					}
                 }
             }
         },
@@ -21,6 +37,10 @@
             },
             "axa_document" : {
                 "properties": {
+					"title" : {
+						"type" : "string",
+						"boost" : 3.0
+					},
                     "url" : {
                         "type" : "string",
                         "index" : "not_analyzed",

@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/codegangsta/martini"
 	"github.com/codegangsta/martini-contrib/binding"
-	"github.com/codegangsta/martini-contrib/gzip"
+	_ "github.com/codegangsta/martini-contrib/gzip"
 	"github.com/mattbaird/elastigo/api"
 )
 
@@ -13,7 +13,7 @@ func main() {
 
 	m := martini.New()
 
-	m.Use(gzip.All())
+	//m.Use(gzip.All())
 	m.Use(martini.Recovery())
 	m.Use(martini.Logger())
 
@@ -21,6 +21,7 @@ func main() {
 	r := martini.NewRouter()
 
 	r.Post("/crawl", binding.Bind(axaDocument{}), w.index)
+	r.Post("/ask", binding.Bind(question{}), w.search)
 
 	m.Action(r.Handle)
 	m.Run()

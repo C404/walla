@@ -9,16 +9,15 @@
      </ul>
     </div>
     <div id="question">
-      @<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> êtes vous satisfait de cette réponse ? <%= button_to "Oui", @tweet.answer_url %> <button>Non</button>
+      <span id="show">@<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> êtes vous satisfait de cette réponse ? <%= button_to "Oui", @tweet.answer_url %> <button onClick="UnhappyCustomer();">Non</button></span>
+      <span id="hide">Un conseiller proche de <%= @city[:country_name] %> a été prévenu et reprendra contact avec vous très prochainement</span>
+
     </div>
     <div style="clear: both;"></div>
   </div>
-  <div id="pull-right">
-    <b>Wall-A proposal</b>
-  </div>
+    <img src="/assets/robot_hello_off.png" id="pull-right" >
   <div style="clear: both;"></div>
 </div>
-  <iframe src="<%= @tweet.answer_url %>">
-    <p>Your browser does not support iframes.</p>
-  </iframe>
-
+<iframe src="<%= @tweet.answer_url %>">
+  <p>Your browser does not support iframes.</p>
+</iframe>

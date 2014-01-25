@@ -44,9 +44,16 @@ iframe {
     font-size: 1.1em;
     line-height: 3em;
     font-family: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
-input[type="submit"], button {
+#header a { color: #fff; font-weight: bold; text-decoration: none; }
+#header a:hover { text-decoration: underline; }
+
+#header input[type="submit"], button {
   border: thin solid #dedede;
   border-radius: 7px;
   text-transform: uppercase;
@@ -55,13 +62,48 @@ input[type="submit"], button {
   cursor: pointer;
 }
 
-input[type="submit"]:hover, button:hover {
+#header input[type="submit"]:hover, button:hover {
   background-color: #ddd;
 }
 
-form {
+#header form {
   display: inline-block;
 }
+
+
+#header #pull-left { float: left; width: 800px; text-align: left;}
+#header #pull-right { float: right; width: 400px; text-align: right; padding-right: 20px; }
+#question {display: inline-block;}
+
+#proposals { display: inline-block; margin-left: 10px; margin-right: 20px; position: relative; }
+#proposals a#suggest {
+  display: inline-block;
+  border: thin solid #ddd;
+  background-color: #fff;
+  color: rgb(68, 75, 110);
+  padding: 0px 5px 0px 5px;
+  text-transform: capitalize;
+}
+
+#proposals a#suggest:hover { text-decoration: none; }
+
+
+#proposals ul {display: none;}
+#proposals:hover ul {
+  color: #000;
+  min-width: 350px;
+  display: block;
+  position: absolute;
+  top: 33px;
+  left: 0px;
+  border: thin solid #ddd;
+  background-color: #fff;
+  padding: 0px; 
+}
+
+#proposals ul li { list-style: none; border-bottom: thin solid #ddd; padding: 0px 15px; font-size: 15px; line-height: 200%; }
+#proposals ul li span { color: #000; }
+#proposals ul li span:hover { text-decoration: underline; cursor: pointer; }
 
 
 

@@ -1,8 +1,24 @@
 <div id="header">
- <%= @tweet.account %> êtes vous satisfait de cette réponse ? <%= button_to "Oui", @tweet.answer_url %> <button>Non</button>
- <%-# link_to 'test', root_path, remote: true -%>
+  <div id="pull-left">
+    <div id="proposals">
+     <a href="#" id="suggest">Autres suggestions</a>
+     <ul>
+        <% @other_urls.each do |suggestion| %>
+         <li><span onClick="ChangeFrame('<%= suggestion[:url] %>');"><%= suggestion[:title] %></span></li>
+        <% end %>
+     </ul>
+    </div>
+    <div id="question">
+      @<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> êtes vous satisfait de cette réponse ? <%= button_to "Oui", @tweet.answer_url %> <button>Non</button>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+  <div id="pull-right">
+    <b>Wall-A proposal</b>
+  </div>
+  <div style="clear: both;"></div>
 </div>
   <iframe src="<%= @tweet.answer_url %>">
     <p>Your browser does not support iframes.</p>
   </iframe>
-<style type="text/css">
+

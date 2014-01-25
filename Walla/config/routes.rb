@@ -1,5 +1,6 @@
 Walla::Application.routes.draw do
-  get "framer/index"
+#  get "framer/index"
+  get '/go/:id', to: 'framer#index', as: :go
   resources :tweets
 
   # The priority is based upon order of creation: first created -> highest priority.

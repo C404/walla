@@ -54,6 +54,9 @@ group :development do
   gem 'pry'
 end
 
+gem 'databasedotcom'
+
+
 # Configuration handling
 gem 'figaro'
 

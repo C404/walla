@@ -16,7 +16,7 @@ class Tweet < ActiveRecord::Base
     begin
       client.user(self.account).name.underscore.gsub('_', ' ')
     rescue
-      ""
+      nil
     end
   end
 end

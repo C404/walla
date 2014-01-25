@@ -75,3 +75,6 @@ gem 'daemons-rails'
 
 # Serialization
 gem "active_model_serializers"
+
+# ElascticSearch
+gem 'tire'

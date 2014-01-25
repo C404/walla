@@ -16,11 +16,9 @@ token = client.authenticate(username: 'julien.ballet.pro@gmail.com',
 
 puts client.list_sobjects.sort
 
-exit
 Sf = Module.new
 ['User', 'Task'].each do |klass|
   Sf.const_set klass, client.materialize(klass)
 end
-
 
 

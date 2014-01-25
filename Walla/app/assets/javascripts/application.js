@@ -18,8 +18,8 @@
 
 $(function () {
   // $('ul').hide();
-  // $('#header').hide();
-  // setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
+  $('#header').hide();
+  setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
 });
 
 

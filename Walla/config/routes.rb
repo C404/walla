@@ -1,4 +1,5 @@
 Walla::Application.routes.draw do
+  get "framer/index"
   resources :tweets
 
   # The priority is based upon order of creation: first created -> highest priority.

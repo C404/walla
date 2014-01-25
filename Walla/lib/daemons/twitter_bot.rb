@@ -51,7 +51,7 @@ while($running) do
             message_url:  object.url
           }
           data = JSON.parse(response.body)['tweet']
-          url = "http://localhost:3000/tweets/#{data['id']}"
+          url = "http://localhost:3000/go/#{data['id']}"
           client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
             in_reply_to_status: object)
         end

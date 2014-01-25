@@ -27,7 +27,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
 
-    @tweet.answer_url = "http://www.axa.fr"
+    @tweet.answer_url = AxaDocument.query(@tweet.message).first.url
 
     respond_to do |format|
       if @tweet.save
@@ -72,6 +72,7 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:customer_account, :customer_msg, :msg_url, :service_page, :agent_account, :bitly, :chatter_id, :customer_ip, :answered_url)
+      params.require(:tweet).permit(:account, :message, :message_url,
+        :answer_url, :chatter_msg_id, :agent_account, :customer_ip)
     end
 end

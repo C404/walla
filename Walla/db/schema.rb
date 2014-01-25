@@ -26,4 +26,6 @@ ActiveRecord::Schema.define(version: 20140124234244) do
     t.datetime "updated_at"
   end
 
+  add_index "tweets", ["key"], name: "index_tweets_on_key", unique: true
+
 end

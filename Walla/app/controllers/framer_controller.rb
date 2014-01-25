@@ -4,6 +4,9 @@ class FramerController < ApplicationController
   def index
     geoip = GeoIP.new("#{Rails.root}/config/GeoLiteCity.dat")
     geoip.city(@remote_ip)
+    @tweet = Tweet.find_by_id(params[:id])
+    @tweet.customer_ip = @remote_ip
+    @tweet.save
   end
 
 

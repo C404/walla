@@ -1,8 +1,8 @@
 <div id="header">
- Lta êtes vous satisfait de cette réponse ? <button>Oui</button> <button>Non</button>
+ <%= @tweet.account %> êtes vous satisfait de cette réponse ? <%= button_to "Oui", @tweet.answer_url %> <button>Non</button>
  <%-# link_to 'test', root_path, remote: true -%>
 </div>
-  <iframe src="http://www.axa.com/fr/presse/faq/">
+  <iframe src="<%= @tweet.answer_url %>">
     <p>Your browser does not support iframes.</p>
   </iframe>
 <style type="text/css">

@@ -46,7 +46,7 @@ iframe {
     font-family: bold;
 }
 
-button {
+input[type="submit"], button {
   border: thin solid #dedede;
   border-radius: 7px;
   text-transform: uppercase;
@@ -55,13 +55,13 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+input[type="submit"]:hover, button:hover {
   background-color: #ddd;
 }
 
-
-
-
+form {
+  display: inline-block;
+}
 
 
 

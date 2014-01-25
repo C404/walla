@@ -10,11 +10,11 @@
   - Gestion du nom des autres suggestions
   * '/go/:id'
   * Bouton OUI
-  - Boutton NON qui /go/:id/next
+  - Boutton NON qui /go/:id/continue
 - /go/:id/next -> Launch d'un worker Sidekiq
 - Worker Sidekiq
-  - Recherche du client ds la db et de l'agent associe.
-  - Sinon recherche d'un client randomement geolocalise.
+  - Recherche du client ds la db SF et de l'agent associe.
+  - Sinon recherche d'un conseiller randomement geolocalise.
   - Recherche dans KB SF d'un KnowledgeArticle pertinent.
   - Creation d'une Task pour l'agent selectionné.
 

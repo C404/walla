@@ -1,6 +1,8 @@
 Walla::Application.routes.draw do
 #  get "framer/index"
-  get '/go/:id', to: 'framer#index', as: :go
+  get  '/go/:id',      to: 'framer#index',    as: :go
+  post '/go/:id/next', to: 'framer#next',     as: :next
+
   resources :tweets
   resources :axa, only: [:create, :index]
 

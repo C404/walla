@@ -1,4 +1,6 @@
-STOPWORDS = %w{je tu il nous vous ils le la les un une des a ai et est ayons ça http j'ai https}
+STOPWORDS = %w{je tu il nous vous ils le la les un une des a ai et
+  est ayons ayez ça http j'ai https bonjour pouvez pouvoir
+  aider aide peux peut possible axa}
 
 AXA_INDEX = Tire.index 'axa_documents' do
   settings = {

@@ -14,6 +14,17 @@ class FramerController < ApplicationController
     puts @other_urls.inspect
   end
 
+  def next
+    begin
+      @tweet = Tweet.find(params[:id])
+      NextWorker.perform_async(@tweet.id)
+      render nothing: true
+    rescue
+      Rails.logger.error "Rescued from #{$!} (#{$!.class})"
+      Rails.logger.error "-- Backtrace:\n#{$!.backtrace.join("\n")}"
+      render nothing: true, status: :unprocessable_entity
+    end
+  end
 
   private
   def ip_env

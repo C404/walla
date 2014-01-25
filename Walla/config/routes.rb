@@ -2,6 +2,7 @@ Walla::Application.routes.draw do
 #  get "framer/index"
   get '/go/:id', to: 'framer#index', as: :go
   resources :tweets
+  resources :axa, only: [:create, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

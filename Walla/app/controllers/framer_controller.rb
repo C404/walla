@@ -20,5 +20,4 @@ class FramerController < ApplicationController
     @remote_ip = '64.116.161.39' if Rails.env.development?
     @remote_ip ||= request.remote_ip
   end
-
 end

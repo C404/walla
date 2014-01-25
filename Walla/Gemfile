@@ -69,3 +69,6 @@ gem 'twitter'
 
 # Easily create/manage daemons for stream schedulin
 gem 'daemons-rails'
+
+# Serialization
+gem "active_model_serializers"

@@ -36,6 +36,12 @@ function ChangeFrame(url) {
   }, 10000);
 }
 
+function redirectTwitter(){
+  setTimeout(function() {
+    window.location.replace("http://twitter.com");
+  }, 6000);
+}
+
 
 $(function(){
  $("#refused").click(function() {
@@ -44,14 +50,10 @@ $(function(){
            type: "POST",
            url: "/go/" +  postId + "/next",
            success: function(response){
-            setTimeout(function() {
-              window.location.replace("http://twitter.com");
-            }, 6000);
+            redirectTwitter();
            },
            error: function(req, response) {
-            setTimeout(function() {
-              window.location.replace("http://twitter.com");
-            }, 6000);
+            redirectTwitter();
            }
         });
  });

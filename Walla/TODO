@@ -1,0 +1,20 @@
+- Input twitter
+  * Recevoir et parser le tweet
+  - Tester les links
+  - Gerer tous les cas de reply aux messages
+- Post du Message
+  * Creation du tweet en db
+  * Renvoi de l'url
+  * Post du tweet de reply
+- Affichage d'une reponse
+  - Gestion du nom des autres suggestions
+  * '/go/:id'
+  * Bouton OUI
+  - Boutton NON qui /go/:id/next
+- /go/:id/next -> Launch d'un worker Sidekiq
+- Worker Sidekiq
+  - Recherche du client ds la db et de l'agent associe.
+  - Sinon recherche d'un client randomement geolocalise.
+  - Recherche dans KB SF d'un KnowledgeArticle pertinent.
+  - Creation d'une Task pour l'agent selectionné.
+

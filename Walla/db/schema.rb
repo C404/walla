@@ -14,15 +14,14 @@
 ActiveRecord::Schema.define(version: 20140124234244) do
 
   create_table "tweets", force: true do |t|
-    t.string   "customer_account"
-    t.string   "customer_msg"
-    t.string   "msg_url"
-    t.string   "service_page"
+    t.string   "key"
+    t.string   "account"
+    t.string   "message"
+    t.string   "message_url"
+    t.string   "answer_url"
     t.string   "agent_account"
-    t.string   "bitly"
-    t.integer  "chatter_id"
+    t.integer  "chatter_msg_id"
     t.string   "customer_ip"
-    t.string   "answered_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -27,6 +27,8 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
 
+    @tweet.answer_url = "http://www.axa.fr"
+
     respond_to do |format|
       if @tweet.save
         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }

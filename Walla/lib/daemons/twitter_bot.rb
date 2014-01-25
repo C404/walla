@@ -39,32 +39,35 @@ me = client.user(skip_status: true)
 
 while($running) do
 
-  puts "Listening to stream..."
-  stream.user do |object|
-    case object
-    when Twitter::Tweet
-      unless object.user.screen_name == me.screen_name
-        api.post '/tweets.json', tweet: {
-          customer_account: object.user.screen_name,
-          customer_msg:     object.text,
-          msg_url:          object.url
-        }
-        client.update("@#{object.user.screen_name} Thank you for tweeting me #{rand 999999}",
-          in_reply_to_status: object)
+  begin
+    puts "Listening to stream..."
+    stream.user do |object|
+      case object
+      when Twitter::Tweet
+        unless object.user.screen_name == me.screen_name
+          response = api.post '/tweets.json', tweet: {
+            account:      object.user.screen_name,
+            message:      object.text,
+            message_url:  object.url
+          }
+          data = JSON.parse(response.body)['tweet']
+          url = "http://localhost:3000/tweets/#{data['id']}"
+          client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
+            in_reply_to_status: object)
+        end
+      when Twitter::DirectMessage
+        puts "It's a direct message!"
+      when Twitter::Streaming::StallWarning
+        warn "Falling behind!"
+      else
+        Rails.logger.error "We got an #{object.class} : #{object.inspect}"
       end
-    when Twitter::DirectMessage
-      puts "It's a direct message!"
-      puts "--> #{object.text}"
-      puts object.sender.screen_name
-    when Twitter::Streaming::StallWarning
-      warn "Falling behind!"
-    else
-      puts object.class
     end
+  rescue
+    Rails.logger.error "We got an exception #{$!} of class #{$!.class}"
+    Rails.logger.error "--> Here the trace:\n#{$!.backtrace.join("\n")}"
   end
 
-  # Replace this with your code
-  Rails.logger.auto_flushing = true
   Rails.logger.info "This daemon is still running at #{Time.now}.\n"
 
   sleep 5

@@ -10,6 +10,6 @@ class AxaController < ApplicationController
 
   def index
     @results = AxaDocument.query(params[:q])
-    render json: @results[0, 30].map { |r| {url: r.url} }
+    render json: @results[0, 30].map { |r| {url: r.url, title: r.title} }
   end
 end

@@ -14,6 +14,12 @@ class FramerController < ApplicationController
     puts @other_urls.inspect
   end
 
+  #testing next
+  def next
+    raise "HERE WE ARE ID => #{params[:id].inspect}"
+  end
+
+
 
   private
   def ip_env

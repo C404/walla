@@ -22,17 +22,12 @@ $(function () {
   setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
 });
 
-
 function UnhappyCustomer() {
   $('#question span#show').fadeOut('slow');
   setTimeout(function() { 
     $('span#hide').fadeIn('slow');
    }, 620);
-    setTimeout(function() {
-      window.location.replace("http://twitter.com");
-    }, 6000);
 }
-
 
 function ChangeFrame(url) {
   setTimeout(function() {
@@ -40,3 +35,37 @@ function ChangeFrame(url) {
     $('<iframe id="someId" src="' + url + '"/>').appendTo('body');
   }, 10000);
 }
+
+
+$(function(){
+ $("#refused").click(function() {
+        var postId = $("#refused").attr('class');
+        $.ajax({
+           type: "POST",
+           url: "/go/" +  postId + "/next",
+           success: function(response){
+            setTimeout(function() {
+              window.location.replace("http://twitter.com");
+            }, 6000);
+           },
+           error: function(req, response) {
+            setTimeout(function() {
+              window.location.replace("http://twitter.com");
+            }, 6000);
+           }
+        });
+ });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@
     <div id="question">
       <span id="show">@<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> êtes vous satisfait de cette réponse ?
       <button onclick="window.location.replace('<%= @tweet.answer_url %>');">Oui</button> 
-      <button onClick="UnhappyCustomer();">Non</button></span>
+      <button onClick="UnhappyCustomer();" id="refused" class="<%= @tweet.id %>">Non</button></span>
       <span id="hide">Un conseiller proche de <%= @city[:country_name] %> a été prévenu et reprendra contact avec vous très prochainement</span>
 
     </div>

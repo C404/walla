@@ -18,8 +18,8 @@
 
 $(function () {
   $('#hide').hide();
-  // $('#header').hide();
-  // setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
+  $('#header').hide();
+  setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
 });
 
 
@@ -38,6 +38,5 @@ function ChangeFrame(url) {
   setTimeout(function() {
     $('iframe').remove();
     $('<iframe id="someId" src="' + url + '"/>').appendTo('body');
-    // $('#someId').contents().find('body').append('<b>hello sajjad</b>');
   }, 10000);
 }

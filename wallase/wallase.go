@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/mattbaird/elastigo/core"
 	"net/http"
+	"strings"
 )
 
 const (
@@ -36,8 +37,10 @@ func (w *wallase) search(q question) (int, string) {
 				"fields": ["title", "body"],
 				"like_text": "%s",
 				"min_similarity" : 0.0,
+				"prefix_length" : 3,
 				"ignore_tf" : true,
-				"boost" : 1.0
+				"boost" : 1.0,
+				"analyzer" : "axa_analyzer"
 			}
 		}
 	}`, q.Message)
@@ -47,12 +50,15 @@ func (w *wallase) search(q question) (int, string) {
 		panic(err)
 	}
 
+	fmt.Printf("-------------------- NEW REQUEST (%s) --------------------\n\n", q.Message)
 	if len(out.Hits.Hits) >= 1 {
 		for i := 0; i < len(out.Hits.Hits); i++ {
-			if err := json.Unmarshal(out.Hits.Hits[i].Source, &doc); err != nil {
+			hit := out.Hits.Hits[i]
+			fmt.Println("SCORE:", hit.Score)
+			if err := json.Unmarshal(hit.Source, &doc); err != nil {
 				panic(err)
 			}
-			println(doc.Title)
+			fmt.Println("TITLE:", strings.TrimSpace(doc.Title), "\n")
 		}
 	}
 	return http.StatusOK, ""

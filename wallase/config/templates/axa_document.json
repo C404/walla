@@ -10,7 +10,25 @@
                             "type" : "custom",
 							"tokenizer" : "standard",
 							"filter" : ["standard", "lowercase", "stop", "asciifolding", "word_delimiter", "eli", "snow"],
-							"stopwords" : ["ayons", "pouvez", "pouvons", "ayez", "axa", "bonjour", "svp", "merci", "dois", "peu", "peut", "peux", "faire"]
+                            "stopwords" : [
+                                "ayons", "ayez", "axa", "aux", "aider", "avec", "alors", "aucuns", "aussi", "autre", "avant", "avec", "avoir",
+                                "bonjour", "beaucoup", "bien", "bon",
+                                "cas", "car", "ce", "cela", "ces", "ceux", "chaque", "ci", "comme", "comment",
+                                "dois", "dans", "des", "du", "dedans", "depuis", "deux", "devrait", "doit", "donc", "debut",
+                                "etions", "etiez", "ete", "etre",
+                                "faire", "fait", "faites", "fois", "font", "force",
+                                "http", "https", "hors",
+                                "ils", "il", "ici",
+                                "la", "le", "les", "leur",
+                                "merci", "ma", "maintenant", "mais", "moins", "meme",
+                                "ni", "notre",
+                                "ou",
+                                "pouvez", "pouvons", "peu", "peut", "peux", "puis", "parce", "par", "plupart",
+                                "que", "quoi", "quelle", "quel", "quand", "quant", "quelles", "quels", "qui",
+                                "svp", "sont", "sa", "sans", "ses", "seulement", "si", "sien", "son", "sous", "soyez", "sur",
+                                "trop", "ta", "tandis", "tellement", "tels", "tes", "ton", "tous", "tout", "trop", "tres", "tu",
+                                "vos", "vous", "voie", "voient", "vont", "votre", "vu"
+                            ]
                         }
                     },
 					"filter" : {

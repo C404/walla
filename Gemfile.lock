@@ -126,6 +126,7 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashie (2.0.5)
     hashr (0.0.22)
     highline (1.6.20)
     hike (1.2.3)
@@ -297,6 +298,7 @@ DEPENDENCIES
   figaro
   geocoder
   geoip
+  hashie
   jbuilder (~> 1.2)
   jquery-rails
   meta_request (= 0.2.1)
@@ -304,6 +306,7 @@ DEPENDENCIES
   pry
   quiet_assets
   rails (= 4.0.0)
+  rest-client
   rvm-capistrano
   sass-rails (~> 4.0.0)
   sdoc

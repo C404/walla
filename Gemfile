@@ -91,3 +91,8 @@ gem 'sidekiq'
 
 # Le meilleur des ActiveAdmin
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+gem 'rest-client'
+
+
+gem 'hashie'

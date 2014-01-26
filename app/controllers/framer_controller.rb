@@ -3,7 +3,7 @@ class FramerController < ApplicationController
 
   def index
     if @remote_ip =~ /62\.210\./
-      @city = 'Paris 17e'
+      @city = 'Paris (75017)'
     else
       @city = GEOIP.city(@remote_ip)
       @city = @city[:city_name] || @city[:country_name]

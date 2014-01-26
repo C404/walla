@@ -28,7 +28,7 @@ stream = Twitter::Streaming::Client.new do |config|
   config.access_token_secret  = ENV['TWITTER_ACCESS_SECRET']
 end
 
-api = Faraday.new(:url => 'http://localhost:3000') do |faraday|
+api = Faraday.new(:url => 'http://192.168.0.20:3000') do |faraday|
   faraday.request  :url_encoded             # form-encode POST params
   faraday.response :logger                  # log requests to STDOUT
   faraday.adapter Faraday.default_adapter   # make requests with Net::HTTP
@@ -44,7 +44,7 @@ while($running) do
     stream.user do |object|
       case object
       when Twitter::Tweet
-        unless object.user.screen_name == me.screen_name
+        if object.user.screen_name != me.screen_name and object.in_reply_to_status_id.nil?
           response = api.post '/tweets.json', tweet: {
             account:      object.user.screen_name,
             message:      object.text,

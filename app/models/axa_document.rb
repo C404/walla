@@ -73,6 +73,9 @@ class AxaDocument
         puts 'error'
         result = []
       end
+      result.map do |r|
+        Hashie::Mash.new r
+      end
       # puts result.inspect
       # Hashie::Mash.new result
       # return [] unless q and q.present?

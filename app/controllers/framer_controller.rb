@@ -3,8 +3,11 @@ class FramerController < ApplicationController
 
   def index
     @city = GEOIP.city(@remote_ip)
+    @city = @city[:city_name] || @city[:country_name]
+
     @tweet = Tweet.find_by_id(params[:id])
     @tweet.set_user_ip @remote_ip if @tweet
+
     # Fetch other urls suggestions
     @other_urls = AxaDocument.query(@tweet.message)
     if @other_urls.any?

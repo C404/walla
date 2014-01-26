@@ -44,8 +44,11 @@ while($running) do
     stream.user do |object|
       case object
       when Twitter::Tweet
+        puts (object.user.screen_name != me.screen_name and object.in_reply_to_status_id.nil?).inspect
         if object.user.screen_name != me.screen_name and object.in_reply_to_status_id.nil?
-          response = api.post '/tweets.json', tweet: {
+          puts 'posting'
+          puts "#{ENV['WALLA_URL']}/tweets.json"
+          response = api.post "#{ENV['WALLA_URL']}/tweets.json", tweet: {
             account:      object.user.screen_name,
             message:      object.text,
             message_url:  object.url

@@ -63,14 +63,16 @@ class AxaDocument
     end
 
     def query(q)
-
+      puts 'query'
+      puts q
       # url: p[:url], title: p[:content], body: p[:body]
       begin
-        result = RestClient.post('http://192.168.0.18:3000/ask', {query: q}.to_json, :content_type => :json, :accept => :json)    
+        result = RestClient.post('http://192.168.0.18:3000/ask', {message: q, user: 'bite42estunGo'}.to_json, :content_type => :json, :accept => :json)    
       rescue
-        result = {}
+        result = []
       end
-      Hashie::Mash.new result
+      puts result.inspect
+      # Hashie::Mash.new result
       # return [] unless q and q.present?
       # q = AXA_INDEX.analyze q, analyzer: 'axa_analyzer'
       # q = q['tokens'].map { |i| i['token' ]}.join " "
@@ -82,6 +84,7 @@ class AxaDocument
       #     string q
       #   end
       # end.results
+      result
     end
 
   end

@@ -7,7 +7,7 @@ require 'capistrano/ext/multistage'
 
 set :application,   'walla'
 set :scm,           :git
-set :repository,    'git@github.com/3XX0/Walla.git'
+set :repository,    'git@github.com:3XX0/walla.git'
 set :deploy_via,    :remote_cache # Not that usefull here, since the repo is on the same host
 set :use_sudo,      false
 
@@ -29,6 +29,7 @@ namespace :db do
   desc "Make symlink for database yaml"
   task :symlink do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/example.yml #{release_path}/config/example.yml"
   end
 end
 after  "deploy:update_code",        "db:symlink"

@@ -10,13 +10,16 @@ class NextWorker
       sf_existing_account = false
 
       if @tweet.full_name
-        sf_account = Account.search("Find {#{@tweet.full_name}} RETURNING Account").first
-        sf_owner_id = sf_account.OwnerId
-        sf_existing_account = true
+        query = @tweet.full_name.gsub ' ', '*'
+        sf_account = Account.search("Find {#{query}} RETURNING Account").first
+        if sf_account
+          sf_owner_id = sf_account.OwnerId
+          sf_existing_account = true
+        end
       end
 
       # Recherche d'un User randomement geolocalise
-      sf_owner_id ||= User.all.sample.id
+      sf_owner_id ||= User.find_by_name('Grouillot').Id
 
       # Recherche dans la KB SF d'articles en rapport avec le tweet
       # page = SF_CLIENT.search("FIND {SENS aime text} RETURNING ClientProcess__kav(Id WHERE PublishStatus='Online' AND Language='fr')").first
@@ -25,7 +28,7 @@ class NextWorker
       if sf_existing_account
         attributes = {
           "Subject" => "#{sf_account.Name} a posé une question sur Twitter",
-          "AccoundId" => sf_account.Id,
+          "WhatId" => sf_account.Id,
           "Description" => <<-DESC
 
           Un de vos clients a posé une question à notre robot de support via
@@ -50,6 +53,8 @@ class NextWorker
           DESC
         }
       end
+
+      #debugger
 
       Sf::Task.create(attributes.merge('OwnerId' => sf_owner_id))
     rescue

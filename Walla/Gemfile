@@ -46,6 +46,13 @@ end
 gem 'debugger', '>= 1.6.5', group: [:development, :test]
 
 group :development do
+  # Deploy with Capistrano
+  gem 'capistrano', '~> 2'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano' # supports rvm on new serv
+  gem 'capistrano-thin', github: 'elthariel/capistrano-thin', :require => false
+  gem 'meta_request', '0.2.1'
+
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
@@ -81,3 +88,6 @@ gem 'tire'
 
 # Sidekiq
 gem 'sidekiq'
+
+# Le meilleur des ActiveAdmin
+gem 'activeadmin', github: 'gregbell/active_admin'

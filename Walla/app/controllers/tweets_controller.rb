@@ -30,11 +30,11 @@ class TweetsController < ApplicationController
     results = AxaDocument.query(@tweet.message)
 
     unless results.any?
-      render nothing: true, status: :not_found
+      return render nothing: true, status: :not_found
     else
       @tweet.answer_url = results.first.url
     end
-    
+
 
     if @tweet.save
       render json: @tweet, status: :created

@@ -2,8 +2,7 @@ class FramerController < ApplicationController
   before_action :ip_env
 
   def index
-    geoip = GeoIP.new("#{Rails.root}/config/GeoLiteCity.dat")
-    @city = geoip.city(@remote_ip)
+    @city = GEOIP.city(@remote_ip)
     @tweet = Tweet.find_by_id(params[:id])
     @tweet.set_user_ip @remote_ip if @tweet
     # Fetch other urls suggestions

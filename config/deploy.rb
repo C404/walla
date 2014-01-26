@@ -29,6 +29,7 @@ namespace :db do
   task :symlink do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
+    run "ln -nfs #{shared_path}/GeoIPCity.dat #{release_path}/config/GeoIPCity.dat"
   end
 end
 before "deploy:assets:precompile",  "db:symlink"

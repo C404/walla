@@ -10,7 +10,7 @@
 #wallpaper {
   height: 100%;
   width: 100%;
-  background-image: url('/assets/wallpaper.jpg');
+  background-image: image-url('/assets/wallpaper.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -42,7 +42,7 @@
   height: 320px;
   width: 250px;
   float: right;
-  background-image: url('/assets/robot_big_sit.png');
+  background-image: image-url('/assets/robot_big_sit.png');
   background-size: cover;
   background-position: center;
  }

@@ -32,7 +32,9 @@ class TweetsController < ApplicationController
     unless results.any?
       return render nothing: true, status: :not_found
     else
-      @tweet.answer_url = results.first.url
+      # puts results.inspect
+      # result = Hashie::Mash.new result
+      @tweet.answer_url = results.first['url'] || 'http://www.axa.fr'
     end
 
 

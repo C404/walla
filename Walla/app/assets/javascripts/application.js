@@ -45,17 +45,17 @@ function redirectTwitter(){
 
 $(function(){
  $("#refused").click(function() {
-        var postId = $("#refused").attr('class');
-        $.ajax({
-           type: "POST",
-           url: "/go/" +  postId + "/next",
-           success: function(response){
-            redirectTwitter();
-           },
-           error: function(req, response) {
-            redirectTwitter();
-           }
-        });
+    var postId = $("#refused").attr('class');
+    $.ajax({
+       type: "POST",
+       url: "/go/" +  postId + "/next",
+       success: function(response){
+        redirectTwitter();
+       },
+       error: function(req, response) {
+        redirectTwitter();
+       }
+    });
  });
 });
 

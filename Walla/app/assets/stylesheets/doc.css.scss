@@ -1,0 +1,47 @@
+// Place all the styles related to the doc controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// @font-face{font-family:"gothamlight";src:url("/assets/font/Gotham-Light.ttf");}
+
+#wallpaper {
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.content { width: 900px; margin: auto; position: relative; height: 100%;}
+.content_center { text-align: center; }
+.clr { color: #fff; }
+
+
+.home_block { position: absolute; width: 700px; margin: auto; 
+  top: 20%;
+  left: 15%;
+
+}
+
+#present {
+  float: left;
+  width: 450px;
+  text-align: center;
+}
+
+#present a { color: #fff; text-decoration: none; font-weight: bold; }
+#present a:hover { text-decoration: underline; }
+
+#present h1 { font-size: 55px; margin-bottom: 0px;}
+#present h2 { font-size: 24px; padding-bottom: 0px; margin-bottom: 0px;}
+#present h3 { font-size: 15px; }
+
+
+#logo { 
+  height: 320px;
+  width: 250px;
+  float: right;
+  background-image: url('/assets/robot_big_sit.png');
+  background-size: cover;
+  background-position: center;
+ }

@@ -1,5 +1,4 @@
 Walla::Application.routes.draw do
-#  get "framer/index"
   get '/go/:id', to: 'framer#index', as: :go
   post '/go/:id/next', to: 'framer#next'
   resources :tweets
@@ -9,8 +8,8 @@ Walla::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'framer#index'
-
+  root 'doc#index'
+  get  '/documentation', to: 'doc#documentation', as: :documentation
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

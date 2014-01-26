@@ -4,6 +4,9 @@
 
 // @font-face{font-family:"gothamlight";src:url("/assets/font/Gotham-Light.ttf");}
 
+// GENERAL //
+
+
 #wallpaper {
   height: 100%;
   width: 100%;
@@ -16,6 +19,7 @@
 .content_center { text-align: center; }
 .clr { color: #fff; }
 
+// INDEX //
 
 .home_block { position: absolute; width: 700px; margin: auto; 
   top: 20%;
@@ -31,12 +35,9 @@
 
 #present a { color: #fff; text-decoration: none; font-weight: bold; }
 #present a:hover { text-decoration: underline; }
-
 #present h1 { font-size: 55px; margin-bottom: 0px;}
 #present h2 { font-size: 24px; padding-bottom: 0px; margin-bottom: 0px;}
 #present h3 { font-size: 15px; }
-
-
 #logo { 
   height: 320px;
   width: 250px;
@@ -45,3 +46,29 @@
   background-size: cover;
   background-position: center;
  }
+
+
+// DOCUMENTATION //
+#fixe-image { width: 200px; position: fixed; top: 10px; right: 10px; }
+
+
+#documentation { padding-top: 20px; }
+
+#documentation h1 { text-align: center; }
+#documentation h2 { text-align: left; }
+#documentation li { font-size: 15px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

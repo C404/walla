@@ -28,7 +28,7 @@ stream = Twitter::Streaming::Client.new do |config|
   config.access_token_secret  = ENV['TWITTER_ACCESS_SECRET']
 end
 
-api = Faraday.new(:url => 'http://192.168.0.20:3000') do |faraday|
+api = Faraday.new(:url => ENV['WALLA_URL']) do |faraday|
   faraday.request  :url_encoded             # form-encode POST params
   faraday.response :logger                  # log requests to STDOUT
   faraday.adapter Faraday.default_adapter   # make requests with Net::HTTP
@@ -52,7 +52,7 @@ while($running) do
           }
           if response.status == 201
             data = JSON.parse(response.body)['tweet']
-            url = "http://localhost:3000/go/#{data['id']}"
+            url = "#{ENV['WALLA_URL']}/go/#{data['id']}"
             client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
               in_reply_to_status: object)
           else

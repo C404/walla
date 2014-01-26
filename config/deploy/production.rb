@@ -6,7 +6,7 @@ set :thin_max_conns,            1024
 set :thin_max_persistent_conns, 1024
 set :thin_servers,              3
 
-set :user, 'gayme'
+set :user, 'walla'
 set :deploy_to, '/home/walla/app'
 set :branch, 'master'
 set :rails_env, 'production'

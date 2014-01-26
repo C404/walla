@@ -1,25 +1,49 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+#
+# Deploy configuration for Gayme
+#
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+require 'capistrano-thin'
+require 'capistrano/ext/multistage'
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :application,   'walla'
+set :scm,           :git
+set :repository,    'git@github.com/3XX0/Walla.git'
+set :deploy_via,    :remote_cache # Not that usefull here, since the repo is on the same host
+set :use_sudo,      false
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+set :format,        :pretty
+set :log_level,     :debug
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+set :shared_children, shared_children + %w{public/uploads public/preview public/sitemaps}
+set :keep_releases, 5
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# RVM automatic deployment
+set :rvm_ruby_string, 'ruby-2.0.0-p247'
+before 'deploy:setup', 'rvm:install_rvm'   # install RVM
+before 'deploy:setup', 'rvm:install_ruby'   # install RVM
+
+# Database migration
+after 'deploy:update_code', 'deploy:migrate'
+
+namespace :db do
+  desc "Make symlink for database yaml"
+  task :symlink do
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+  end
+end
+after  "deploy:update_code",        "db:symlink"
+before "deploy:assets:precompile",  "db:symlink"
+
+# Daemons stuff
+set :daemons, [:twitter_bot]
+
+# Sidekiqs stuff
+set :sidekiqs, {
+  default: {
+    queues: [:default],
+    concurrency: 5
+  }
+}
+
+require 'rvm/capistrano'
+require 'bundler/capistrano'

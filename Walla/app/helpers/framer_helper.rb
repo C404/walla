@@ -1,3 +1,0 @@
-module FramerHelper
-
-end

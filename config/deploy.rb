@@ -23,17 +23,17 @@ before 'deploy:setup', 'rvm:install_rvm'   # install RVM
 before 'deploy:setup', 'rvm:install_ruby'   # install RVM
 
 # Database migration
-after 'deploy:update_code', 'deploy:migrate'
 
 namespace :db do
   desc "Make symlink for database yaml"
   task :symlink do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/example.yml #{release_path}/config/example.yml"
+    run "ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
   end
 end
-after  "deploy:update_code",        "db:symlink"
 before "deploy:assets:precompile",  "db:symlink"
+after  "deploy:update_code",        "db:symlink"
+after  'deploy:update_code',        'deploy:migrate'
 
 # Daemons stuff
 set :daemons, [:twitter_bot]

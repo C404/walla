@@ -2,11 +2,15 @@ class FramerController < ApplicationController
   before_action :ip_env
 
   def index
-    if @remote_ip =~ /62\.210\./
-      @city = 'Paris (75017)'
-    else
-      @city = GEOIP.city(@remote_ip)
-      @city = @city[:city_name] || @city[:country_name]
+    begin
+      if @remote_ip =~ /62\.210\./
+        @city = 'Paris (75017)'
+      else
+        @city = GEOIP.city(@remote_ip)
+        @city = @city[:city_name] || @city[:country_name]
+      end
+    rescue
+      @city = "???"
     end
 
     @tweet = Tweet.find_by_id(params[:id])

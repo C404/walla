@@ -56,10 +56,10 @@ while($running) do
           if response.status == 201
             data = JSON.parse(response.body)['tweet']
             url = "#{ENV['WALLA_URL']}/go/#{data['id']}"
-            client.update("@#{object.user.screen_name},#{rand 999}, #{url}",
+            client.update("@#{object.user.screen_name}, Je vous suggère cette page: #{url}",
               in_reply_to_status: object)
           else
-            client.update("Désolé @#{object.user.screen_name},#{rand 999}, je ne sais pas comment vous aider",
+            client.update("Désolé @#{object.user.screen_name}, je ne sais pas comment vous aider :-/",
               in_reply_to_status: object)
           end
         end

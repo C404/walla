@@ -35,6 +35,7 @@ end
 before "deploy:assets:precompile",  "db:symlink"
 after  "deploy:update_code",        "db:symlink"
 after  'deploy:update_code',        'deploy:migrate'
+after  'deploy:restart',            'daemon:twitter_bot:restart'
 
 # Daemons stuff
 set :daemons, [:twitter_bot]

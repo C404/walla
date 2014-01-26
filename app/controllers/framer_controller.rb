@@ -17,7 +17,7 @@ class FramerController < ApplicationController
     if @other_urls.any?
       @other_urls = @other_urls[1,9].map { |i| {url: i['url'], title: i['title']} }
     end
-    puts @other_urls.inspect
+    Rails.logger.warn "Query result : #{@other_urls.inspect}"
   end
 
   def next

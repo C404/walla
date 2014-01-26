@@ -2,15 +2,22 @@ class FramerController < ApplicationController
   before_action :ip_env
 
   def index
-    @city = GEOIP.city(@remote_ip)
+    if @remote_ip =~ /62\.210\./
+      @city = 'Paris (75017)'
+    else
+      @city = GEOIP.city(@remote_ip)
+      @city = @city[:city_name] || @city[:country_name]
+    end
+
     @tweet = Tweet.find_by_id(params[:id])
     @tweet.set_user_ip @remote_ip if @tweet
+
     # Fetch other urls suggestions
     @other_urls = AxaDocument.query(@tweet.message)
     if @other_urls.any?
       @other_urls = @other_urls[1,9].map { |i| {url: i['url'], title: i['title']} }
     end
-    puts @other_urls.inspect
+    Rails.logger.warn "Query result : #{@other_urls.inspect}"
   end
 
   def next

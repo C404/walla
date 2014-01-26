@@ -1,5 +1,0 @@
-cluster.name: wallase
-
-path:
-    work: /tmp/elasticsearch
-    logs: /tmp/log/elasticsearch

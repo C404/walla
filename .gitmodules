@@ -1,0 +1,3 @@
+[submodule "wallase"]
+	path = wallase
+	url = git://github.com/3XX0/wallase

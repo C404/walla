@@ -54,8 +54,6 @@ class NextWorker
         }
       end
 
-      #debugger
-
       Sf::Task.create(attributes.merge('OwnerId' => sf_owner_id))
     rescue
       Rails.logger.error "Rescued from #{$!} (#{$!.class})"

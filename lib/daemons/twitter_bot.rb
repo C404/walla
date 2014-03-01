@@ -14,19 +14,8 @@ Signal.trap("TERM") do
   $running = false
 end
 
-client = Twitter::REST::Client.new do |config|
-  config.consumer_key         = ENV['TWITTER_API_KEY']
-  config.consumer_secret      = ENV['TWITTER_API_SECRET']
-  config.access_token         = ENV['TWITTER_ACCESS_TOKEN']
-  config.access_token_secret  = ENV['TWITTER_ACCESS_SECRET']
-end
-
-stream = Twitter::Streaming::Client.new do |config|
-  config.consumer_key         = ENV['TWITTER_API_KEY']
-  config.consumer_secret      = ENV['TWITTER_API_SECRET']
-  config.access_token         = ENV['TWITTER_ACCESS_TOKEN']
-  config.access_token_secret  = ENV['TWITTER_ACCESS_SECRET']
-end
+client = TwitterFactory.create_client
+stream = TwitterFactory.create_streaming_client
 
 api = Faraday.new(:url => ENV['WALLA_URL']) do |faraday|
   faraday.request  :url_encoded             # form-encode POST params

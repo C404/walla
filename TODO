@@ -1,3 +1,23 @@
+### NEW TODO
+- Pimper la top barre.
+- Integrer le machine learning
+- AutoResponder
+- Interface d'admin
+  - Autoresponder
+  - Stats
+    - Taux de reponse yes/no
+    - Trends de reponse
+    - Geoloc
+- Integration SF
+  - Recherche KB
+- Extraction de profil twitter
+  - HashTag plus utilises
+  - ???
+- Integration Geoloc / SF (trouver le conseiller le plus proche)
+
+
+### OLD TODO
+
 - Input twitter
   * Recevoir et parser le tweet
   - Tester les links

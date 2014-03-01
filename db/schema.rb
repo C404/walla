@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124234244) do
+ActiveRecord::Schema.define(version: 20140301133430) do
+
+  create_table "auto_responders", force: true do |t|
+    t.string   "matcher"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tweets", force: true do |t|
     t.string   "key"

@@ -1,5 +1,6 @@
 class AutoResponder < ActiveRecord::Base
   validate :regexp_is_valid?
+  validate :message, length: {minimum: 5, maximum: (140 - 20)}
 
   scope :enabled, ->{where(enabled: true)}
 
@@ -18,12 +19,7 @@ class AutoResponder < ActiveRecord::Base
   class << self
     def respond(message)
       AutoResponder.enabled.each do |responder|
-        if Regexp.new(responder.matcher).match message
-          puts "Matching: #{responder.matcher}"
-          return responder.message
-        else
-          puts "NOT Matching: #{responder.matcher}"
-        end
+        return responder.message if Regexp.new(responder.matcher).match message
       end
 
       return false

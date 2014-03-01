@@ -1,5 +1,4 @@
 class TwitterFactory
-
   class << self
     def create_client
       Twitter::REST::Client.new do |config|

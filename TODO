@@ -1,7 +1,7 @@
 ### NEW TODO
 - Pimper la top barre.
 - Integrer le machine learning
-- AutoResponder
+* AutoResponder
 - Interface d'admin
   - Autoresponder
   - Stats
@@ -11,8 +11,8 @@
 - Integration SF
   - Recherche KB
 - Extraction de profil twitter
-  - HashTag plus utilises
-  - ???
+  * HashTag plus utilises
+  * User les plus twittes
 - Integration Geoloc / SF (trouver le conseiller le plus proche)
 
 

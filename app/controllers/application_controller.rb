@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
   def authenticate_user!
-  	redirect_to new_user_session_url(state: request.env['REQUEST_URI']) unless user_signed_in?
+  	redirect_to new_user_session_url(state: request.original_url) unless user_signed_in?
   end
 end

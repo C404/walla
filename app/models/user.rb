@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:salesforce]
 
 
+  has_many :providers
 
   def self.find_for_oauth(auth)
   	provider = Provider.where(provider: auth.provider, uid: auth.uid).first
@@ -21,7 +22,10 @@ class User < ActiveRecord::Base
   				provider_model = Provider.new
   				provider_model.email = self.email
   			end
-        provider_model.assign_attributes(provider[:credentials].merge({provider: provider[:provider],uid: provider[:uid]})) # could use slice or except...
+        attrs = provider.credentials.except(:instance_url).merge({provider: provider[:provider], uid: provider[:uid]}).to_hash
+        # raise attrs.inspect
+
+        provider_model.assign_attributes(attrs) # could use slice or except...
         provider_model.user = self
         provider_model.save!
 

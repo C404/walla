@@ -1,33 +1,32 @@
 # -*- coding: utf-8 -*-
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user
   
   def salesforce
+    puts params[:state].inspect
     proceed
   end
 
   private
 
-  def proceed # to nename
+  def proceed
     omniauth = request.env["omniauth.auth"]
     omniauth_to_session(omniauth)
 
+
     @user = User.find_for_oauth(omniauth)
+
     if current_user.nil? and @user.nil?
       # user logout and no gateway associated
       if (u = User.find_by_email(session[:omniauth][omniauth.provider.to_sym][:info][:email]))
         # user alread registered we propose to login thorugh existing gateway
         providers = u.providers.map(&:provider)
         providers.push('normal login') if providers.empty?
-        # can be replaced by u.providers.map(&:provider) sym to block ruby 1.9
         flash[:show_providers] = providers
         redirect_to new_user_session_url(state: params[:state]), notice: "An account already exist with this email #{u.email} try to signin with ... #{providers.join(', ')} in order to associate them to your account"
         return
       else
-        # raise session[:omniauth][omniauth.provider.to_sym][:info][:email].inspect
-        # raise omniauth[:info].inspect
-        # raise omniauth.inspect
         email = omniauth[:info][:email]
         password = (0...8).map { (65 + rand(26)).chr }.join
         @user = User.create!(email: email, password: password, password_confirmation: password, first_name: omniauth[:info][:first_name], last_name: omniauth[:info][:last_name])
@@ -47,16 +46,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def omniauth_to_session omniauth
+    omniauth.except!(:extra)
+    omniauth.info.except!(:urls)
+
     session_var = omniauth.provider.to_sym
     session[:omniauth] = {} if session[:omniauth].nil?
-    session[:omniauth][session_var] = omniauth.except(:extra)
+    session[:omniauth][session_var] = omniauth
+
     credentials = session[:omniauth][session_var][:credentials]
+
     credentials[:expires_at] = Time.at(credentials[:expires_at]) if credentials[:expires] && credentials[:expires_at]
-
-    # session[:omniauth][session_var][:extra] = { raw_info: {
-    #   birthday: omniauth.extra.raw_info.birthday
-    #   } }
-
-    end
   end
+end
 

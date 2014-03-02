@@ -1,8 +1,9 @@
 Walla::Application.routes.draw do
 
   # User FrontEnd
-  get '/go/:id', to: 'framer#index', as: :go
-  post '/go/:id/next', to: 'framer#next'
+  get  '/go/:id',       to: 'framer#index', as: :go
+  post '/go/:id/next',  to: 'framer#next'
+  post '/go/:id/learn', to: 'framer#learn'
 
   # API
   resources :tweets

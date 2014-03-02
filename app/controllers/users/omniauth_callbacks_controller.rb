@@ -3,16 +3,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :authenticate_user
   
-  def google_oauth2
+  def sales_force
     proceed
-  end
-
-  def facebook
-    proceed
-  end
-
-  def twitter
-    # proceed
   end
 
   private
@@ -50,7 +42,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
    end
      # we synchronize providers to the db
      current_user.assign_providers_from_session(session)
-     redirect_to((params[:state] and params[:state] =~ URI::regexp) ? params[:state] : account_url, notice: "Login réussi !")
+     redirect_to((params[:state] and params[:state] =~ URI::regexp) ? params[:state] : root_url, notice: "Login réussi !")
     # check valid URL
   end
 

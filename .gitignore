@@ -19,3 +19,5 @@
 /config/application.yml
 
 /config/GeoLiteCity.dat
+
+*.DS_Store

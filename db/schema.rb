@@ -37,4 +37,5 @@ ActiveRecord::Schema.define(version: 20140301133430) do
   end
 
   add_index "tweets", ["key"], name: "index_tweets_on_key", unique: true
+
 end

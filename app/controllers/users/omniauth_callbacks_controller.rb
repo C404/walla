@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_filter :authenticate_user
+  skip_before_filter :authenticate_user!
   
   def sales_force
     proceed

@@ -1,5 +1,5 @@
 class AddsSuccessToTweet < ActiveRecord::Migration
   def change
-    add_column :success, :tweets, :boolean, default: false
+    add_column :tweets, :success, :boolean, default: false
   end
 end

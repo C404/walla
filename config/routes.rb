@@ -17,6 +17,6 @@ Walla::Application.routes.draw do
   get  '/documentation', to: 'doc#documentation', as: :documentation
 
 
-  get '/sf_oauth', to: 'users/omniauth_callbacks#sales_force'
+  # get '/sf_oauth', to: 'users/omniauth_callbacks#sales_force'
 
 end

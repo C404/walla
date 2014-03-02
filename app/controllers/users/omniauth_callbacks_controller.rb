@@ -3,7 +3,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :authenticate_user!
   
-  def sales_force
+  def salesforce
     proceed
   end
 
@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # raise omniauth[:info].inspect
         # raise omniauth.inspect
         email = omniauth[:info][:email]
-        password = User::DEFAULT_PASSWORD
+        password = (0...8).map { (65 + rand(26)).chr }.join
         @user = User.create!(email: email, password: password, password_confirmation: password, first_name: omniauth[:info][:first_name], last_name: omniauth[:info][:last_name])
       end
     end
@@ -53,10 +53,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     credentials = session[:omniauth][session_var][:credentials]
     credentials[:expires_at] = Time.at(credentials[:expires_at]) if credentials[:expires] && credentials[:expires_at]
 
-    session[:omniauth][session_var][:extra] = { raw_info: {
-      gender: omniauth.extra.raw_info.gender,
-      birthday: omniauth.extra.raw_info.birthday
-      } }
+    # session[:omniauth][session_var][:extra] = { raw_info: {
+    #   birthday: omniauth.extra.raw_info.birthday
+    #   } }
 
     end
   end

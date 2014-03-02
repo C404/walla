@@ -45,6 +45,10 @@ end
 # Use debugger
 gem 'debugger', '>= 1.6.5', group: [:development, :test]
 
+gem 'devise'
+
+gem 'omniauth'
+
 group :development do
   # Deploy with Capistrano
   gem 'capistrano', '~> 2'

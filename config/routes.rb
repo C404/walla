@@ -1,5 +1,6 @@
 Walla::Application.routes.draw do
 
+  devise_for :users
   # User FrontEnd
   get '/go/:id', to: 'framer#index', as: :go
   post '/go/:id/next', to: 'framer#next'

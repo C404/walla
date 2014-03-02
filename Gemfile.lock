@@ -190,6 +190,9 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyamorous (0.6.4)
@@ -343,6 +346,7 @@ DEPENDENCIES
   daemons-rails
   databasedotcom
   debugger (>= 1.6.5)
+  devise
   factory_girl_rails
   faker!
   figaro
@@ -352,6 +356,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   meta_request (= 0.2.1)
+  omniauth
   pg
   pry-rails
   quiet_assets

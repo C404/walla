@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302163857) do
+ActiveRecord::Schema.define(version: 20140302165421) do
 
   create_table "auto_responders", force: true do |t|
     t.string   "matcher"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 20140302163857) do
   end
 
   add_index "auto_responders", ["enabled"], name: "index_auto_responders_on_enabled"
+
+  create_table "providers", force: true do |t|
+    t.boolean  "expires"
+    t.datetime "expires_at"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "refresh_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "providers", ["user_id"], name: "index_providers_on_user_id"
 
   create_table "tweets", force: true do |t|
     t.string   "key"
@@ -51,6 +66,9 @@ ActiveRecord::Schema.define(version: 20140302163857) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "birthday"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

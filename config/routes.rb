@@ -4,8 +4,9 @@ Walla::Application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks' }
   # User FrontEnd
-  get '/go/:id', to: 'framer#index', as: :go
-  post '/go/:id/next', to: 'framer#next'
+  get  '/go/:id',       to: 'framer#index', as: :go
+  post '/go/:id/next',  to: 'framer#next'
+  post '/go/:id/learn', to: 'framer#learn'
 
   # API
   resources :tweets

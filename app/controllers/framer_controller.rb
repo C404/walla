@@ -1,5 +1,6 @@
 class FramerController < ApplicationController
   before_action :ip_env
+  before_action :set_tweet, expect: [:index]
 
   def index
     begin
@@ -26,7 +27,7 @@ class FramerController < ApplicationController
 
   def next
     begin
-      @tweet = Tweet.find(params[:id])
+      @tweet.update_attribute(:success, false)
       NextWorker.perform_async(@tweet.id)
       render nothing: true
     rescue
@@ -36,7 +37,17 @@ class FramerController < ApplicationController
     end
   end
 
+  def learn
+    puts "Should learn url #{params[:url]}"
+
+    @tweet.update_attribute(:success, true)
+  end
+
   private
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
+
   def ip_env
     @remote_ip = '78.249.102.240' if Rails.env.development?
     @remote_ip ||= request.remote_ip

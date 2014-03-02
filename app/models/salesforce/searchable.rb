@@ -1,10 +1,6 @@
 module Salesforce::Searchable
   extend ActiveSupport::Concern
 
-  included do
-    puts "Included !"
-  end
-
   module ClassMethods
     def analyzed_search(text)
       analyzed = Api::Analyzer.analyze(text)

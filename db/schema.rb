@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302170826) do
+ActiveRecord::Schema.define(version: 20140305130129) do
 
   create_table "auto_responders", force: true do |t|
     t.string   "matcher"
@@ -42,16 +42,17 @@ ActiveRecord::Schema.define(version: 20140302170826) do
     t.string   "key"
     t.string   "account"
     t.string   "message"
-    t.string   "message_url"
     t.string   "answer_url"
     t.string   "agent_account"
-    t.integer  "chatter_msg_id"
     t.string   "customer_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "success",        default: false
+    t.boolean  "success",          default: false
+    t.integer  "status_id"
+    t.integer  "answer_status_id"
   end
 
+  add_index "tweets", ["answer_status_id"], name: "index_tweets_on_answer_status_id"
   add_index "tweets", ["key"], name: "index_tweets_on_key", unique: true
 
   create_table "users", force: true do |t|

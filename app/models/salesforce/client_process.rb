@@ -1,5 +1,9 @@
-Salesforce::Private.const_set 'ClientProcess', Salesforce.client.materialize('ClientProcess_kav')
+Salesforce.const_set 'ClientProcess', Salesforce.client.materialize('ClientProcess__kav')
 
-class Salesforce::ClientProcess < Salesforce::Private::ClientProcess
+class Salesforce::ClientProcess
   include Salesforce::Searchable
+
+  def url
+    "https://eu2.salesforce.com/articles/ClientProcess/#{self.UrlName}"
+  end
 end

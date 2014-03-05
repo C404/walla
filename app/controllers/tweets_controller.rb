@@ -75,9 +75,10 @@ class TweetsController < ApplicationController
       @tweet = Tweet.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet,
+    # only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:account, :message, :message_url,
-        :answer_url, :chatter_msg_id, :agent_account, :customer_ip)
+      params.require(:tweet).permit(:account, :message, :answer_url,
+        :agent_account, :customer_ip, :status_id)
     end
 end

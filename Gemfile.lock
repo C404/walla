@@ -167,6 +167,8 @@ GEM
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
+    jwt (0.1.11)
+      multi_json (>= 1.5)
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -188,6 +190,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -196,6 +199,23 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    oauth2 (0.9.3)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 0.1.8)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
+    omniauth-oauth2 (1.1.2)
+      faraday (>= 0.8, < 0.10)
+      multi_json (~> 1.3)
+      oauth2 (~> 0.9.3)
+      omniauth (~> 1.2)
+    omniauth-salesforce (1.0.4)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyamorous (0.6.4)
@@ -349,6 +369,7 @@ DEPENDENCIES
   daemons-rails
   databasedotcom
   debugger (>= 1.6.5)
+  devise
   factory_girl_rails
   faker!
   figaro
@@ -359,6 +380,8 @@ DEPENDENCIES
   jquery-rails
   less-rails
   meta_request (= 0.2.1)
+  omniauth
+  omniauth-salesforce
   pg
   pry-rails
   quiet_assets

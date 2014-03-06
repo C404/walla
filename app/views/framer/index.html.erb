@@ -1,25 +1,36 @@
 <div id="header">
-  <div id="pull-left">
-    <div id="proposals">
-     <a href="#" id="suggest">Autres suggestions</a>
-     <ul>
-        <% @other_urls.each do |suggestion| %>
-         <li><span onClick="ChangeFrame('<%= suggestion[:url] %>');"><%= suggestion[:title] %></span></li>
-        <% end %>
-     </ul>
-    </div>
-    <div id="question">
-      <span id="show">@<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> êtes vous satisfait de cette réponse ?
-      <button onclick="window.location.replace('<%= @tweet.answer_url %>');">Oui</button>
-      <button onClick="UnhappyCustomer();" id="refused" class="<%= @tweet.id %>">Non</button></span>
-      <span id="hide">Un conseiller proche de <%= @city %> a été prévenu et reprendra contact avec vous très prochainement</span>
-
-    </div>
-    <div style="clear: both;"></div>
+  <div>
+    @<%= link_to @tweet.account, "https://twitter.com/#{@tweet.account}", target: '_blank' %> de #<%= @city %> êtes vous satisfait de cette réponse ?
   </div>
-    <img src="<%= asset_path('robot_hello_off.png') %>" id="pull-right" >
-  <div style="clear: both;"></div>
+  <button onclick="window.location.replace('<%= @tweet.answer_url %>');">Oui</button>
+  <button onClick="UnhappyCustomer();" id="refused" class="<%= @tweet.id %>">Non</button>
+  <a id="simple-menu" href="#sidr">Autres suggestions</a>
+
+<!--       <span id="hide">Un conseiller proche de  a été prévenu et reprendra contact avec vous très prochainement</span> -->
 </div>
+
+<div id="sidr">
+  <ul>
+    <% @other_urls.each do |suggestion| %>
+      <li><span onClick="ChangeFrame('<%= suggestion[:url] %>');"><%= suggestion[:title].truncate(27) %></span></li>
+    <% end %>
+  </ul>
+</div>
+ 
 <iframe src="<%= @tweet.answer_url %>">
   <p>Your browser does not support iframes.</p>
 </iframe>
+
+
+<div id="loader">
+  <div id="img-loader"></div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+  $('#simple-menu').sidr();
+});
+</script>
+
+

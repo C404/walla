@@ -11,7 +11,7 @@ class NextWorker
 
       if @tweet.full_name
         query = @tweet.full_name.gsub ' ', '*'
-        sf_account = Account.search("Find {#{query}} RETURNING Account").first
+        sf_account = Salesforce::Account.search("Find {#{query}} RETURNING Account").first
         if sf_account
           sf_owner_id = sf_account.OwnerId
           sf_existing_account = true
@@ -19,10 +19,11 @@ class NextWorker
       end
 
       # Recherche d'un User randomement geolocalise
-      sf_owner_id ||= User.find_by_name('Grouillot').Id
+      sf_owner_id ||= Salesforce::User.find_by_name('Grouillot').Id
 
       # Recherche dans la KB SF d'articles en rapport avec le tweet
       # page = SF_CLIENT.search("FIND {SENS aime text} RETURNING ClientProcess__kav(Id WHERE PublishStatus='Online' AND Language='fr')").first
+      pages = ClientProcess.analyzed_search(@tweet.message)
 
       # Creation d'une task
       if sf_existing_account
@@ -54,7 +55,7 @@ class NextWorker
         }
       end
 
-      Sf::Task.create(attributes.merge('OwnerId' => sf_owner_id))
+      Salesforce::Task.create(attributes.merge('OwnerId' => sf_owner_id))
     rescue
       Rails.logger.error "Rescued from #{$!} (#{$!.class})"
       Rails.logger.error "-- Backtrace:\n#{$!.backtrace.join("\n")}"

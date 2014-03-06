@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+@font-face{font-family:"gothambold";src:url("/assets/fonts/Gotham-Bold.ttf");}
+
 html,body
 {
     width: 100%;
@@ -23,8 +25,8 @@ html,body
 
 body
 {
-  font-size:14px;
-  font-family:futura;
+    font-size:14px;
+    font-family:gothambold;
 }
 
 
@@ -37,74 +39,64 @@ iframe {
 }
 
 #header {
-    background-color: rgba(16, 30, 74, 0.8);
-    color: #fff;
-    font-family: arial,FreeSans,verdana,sans-serif;
-    text-align: center;
-    font-size: 1.1em;
-    line-height: 3em;
-    font-family: bold;
     position: absolute;
     z-index: 1000;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 29%;
+    width: 550px;
+    padding: 40px 20px;
+    font-family: gothambold,arial,verdana,sans-serif;
+    text-align: center;
+    font-size: 16px;
+    line-height: 140%;
+    color: #333;
+    background: rgb(203, 203, 203);
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
 }
 
-#header a { color: #fff; font-weight: bold; text-decoration: none; }
+#header a       { color: rgb(75, 75, 75);  text-decoration: none; }
 #header a:hover { text-decoration: underline; }
 
 #header input[type="submit"], button {
-  border: thin solid #dedede;
-  text-transform: uppercase;
-  background-color: #fff;
-  color: #000;
-  cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    background-color: #dedede;
+    color: #000;
+    cursor: pointer;
 }
 
 #header input[type="submit"]:hover, button:hover {
-  background-color: #ddd;
+    background-color: #fff;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+    font-weight: bold;
 }
 
-#header form {
-  display: inline-block;
+#sidr ul li span { cursor: pointer; }
+
+#loader { position: absolute; z-index: 1000000; background-color: rgba(0, 0, 0, 0.8); width: 100%; height: 100%; top: 0; left: 0; }
+#loader #img-loader {
+  position: absolute; z-index: 10000000;
+  top: 40%; left: 45%;
+  background-image: url('/assets/loading.gif');
+  background-size : cover;
+  background-position: center;
+  width: 100px; height: 100px;  
 }
 
 
-#header #pull-left { float: left; width: 800px; text-align: left;}
-#question {display: inline-block;}
-
-#proposals { display: inline-block; margin-left: 10px; margin-right: 20px; position: relative; }
-#proposals a#suggest {
-  display: inline-block;
-  border: thin solid #ddd;
-  background-color: #fff;
-  color: rgb(68, 75, 110);
-  padding: 0px 5px 0px 5px;
-  text-transform: capitalize;
-}
-
-#proposals a#suggest:hover { text-decoration: none; }
 
 
-#proposals ul {display: none;}
-#proposals:hover ul {
-  color: #000;
-  min-width: 350px;
-  display: block;
-  position: absolute;
-  top: 33px;
-  left: 0px;
-  border: thin solid #ddd;
-  background-color: #fff;
-  padding: 0px; 
-}
 
-#proposals ul li { list-style: none; border-bottom: thin solid #ddd; padding: 0px 15px; font-size: 15px; line-height: 200%; }
-#proposals ul li span { color: #000; }
-#proposals ul li span:hover { text-decoration: underline; cursor: pointer; }
 
-#header #pull-right { float: right; width: 60px; padding: 0px 10px 0px 0px; margin: 0px 0px 0px 0px; }
+
+
+
+
+
+
+
+

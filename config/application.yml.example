@@ -15,3 +15,4 @@ development:
   SF_CONSUMER_KEY:       "3MVG99qusVZJwhslz5oY5FkZCA5PLMzsqAXTiLpc46m7uoyYzdXj364AGa4ksBRvtSsQk2Hl1hq4seTQ3oBit"
   SF_CONSUMER_SECRET:    "6599935863771986084"
   WALLA_URL:             "http://localhost:3000"
+  ELASTICSEARCH_URL:     "http://127.0.0.1:9200"

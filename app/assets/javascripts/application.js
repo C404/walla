@@ -17,9 +17,10 @@
 
 
 $(function () {
+  $('#loader').hide();
   $('#hide').hide();
   $('#header').hide();
-  setTimeout(function() {$('#header').fadeIn('slow');}, 2000);
+  setTimeout(function() {$('#header').slideDown('slow');}, 2000);
 });
 
 function UnhappyCustomer() {
@@ -30,10 +31,15 @@ function UnhappyCustomer() {
 }
 
 function ChangeFrame(url) {
+  $.sidr('close');
+  $('#loader').show();
+  $('#header').slideUp('slow');
   setTimeout(function() {
     $('iframe').remove();
     $('<iframe id="someId" src="' + url + '"/>').appendTo('body');
-  }, 10000);
+    $('#loader').hide();
+    setTimeout(function() {$('#header').slideDown('slow');}, 2000);
+  }, 4000);
 }
 
 function redirectTwitter(){

@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_many :providers
 
   def self.find_for_oauth(auth)
-  	provider = Provider.where(provider: auth.provider, uid: auth.uid).first
-  	(provider.nil? ? nil : provider.user)
+    provider = Provider.where(provider: auth.provider, uid: auth.uid).first
+    (provider.nil? ? nil : provider.user)
   end
 
   def assign_providers_from_session(session)
@@ -30,12 +30,12 @@ class User < ActiveRecord::Base
         provider_model.save!
 
         if provider[:extra].is_a? Hash and provider[:extra][:raw_info].is_a? Hash
-        	info = provider[:extra][:raw_info]
-        	self.gender = info[:gender] if self.gender.blank? and info[:gender]
-        	begin
-        		self.birthday = Date.strptime(info[:birthday], '%m/%d/%Y') if self.birthday.blank? and info[:birthday]
-        	rescue
-        	end
+          info = provider[:extra][:raw_info]
+          self.gender = info[:gender] if self.gender.blank? and info[:gender]
+          begin
+            self.birthday = Date.strptime(info[:birthday], '%m/%d/%Y') if self.birthday.blank? and info[:birthday]
+          rescue
+          end
         end
       end
     end

@@ -40,56 +40,21 @@
 # end
 
 class AxaDocument
-  def initialize(hash)
-    @data = hash
-  end
-
-  def type
-    'axa_document'
-  end
-
-  def to_indexed_json
-    @data.to_json
-  end
-
-  def store!
-    # AXA_INDEX.store self
-    # AXA_INDEX.refresh
-  end
-
   class << self
-    def recreate_index
-      # AXA_INDEX.delete
-    end
-
     def query(q)
-      puts 'query'
-      puts q
+      # Removing user mentions from query :)
       q = q.gsub /(@\w*)/, ''
-      # url: p[:url], title: p[:content], body: p[:body]
-      begin
-        result = JSON.parse RestClient.post("#{ENV['EXXO_GO_URL']}/ask", {message: q, user: 'bite42estunGo'}.to_json, :content_type => "application/json; charset=ASCII", :accept => :json)    
-      rescue
-        puts 'error'
-        result = []
-      end
-      result.map do |r|
-        Hashie::Mash.new r
-      end
-      # puts result.inspect
-      # Hashie::Mash.new result
-      # return [] unless q and q.present?
-      # q = AXA_INDEX.analyze q, analyzer: 'axa_analyzer'
-      # q = q['tokens'].map { |i| i['token' ]}.join " "
-      # puts "Query is = '#{q}'"
-      # return [] unless q.present?
 
-      # Tire.search('axa_documents') do
-      #   query do
-      #     string q
-      #   end
-      # end.results
-      result
+      begin
+        result = JSON.parse RestClient.post("#{ENV['WALLASE_URL']}/ask", {message: q, user: 'bite42estunGo'}.to_json, :content_type => "application/json; charset=ASCII", :accept => :json)
+        result['recommended'].map do |r|
+          Hashie::Mash.new r
+        end
+      rescue
+        Rails.logger.error "Rescue from exception in AxaDocument.query: #{$!}. Stacktrace: "
+        Rails.logger.error $!.backtrace.join("\n")
+        Array.new
+      end
     end
 
   end

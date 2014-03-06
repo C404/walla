@@ -23,7 +23,8 @@ class NextWorker
 
       # Recherche dans la KB SF d'articles en rapport avec le tweet
       # page = SF_CLIENT.search("FIND {SENS aime text} RETURNING ClientProcess__kav(Id WHERE PublishStatus='Online' AND Language='fr')").first
-      pages = ClientProcess.analyzed_search(@tweet.message)
+      pages = Salesforce::ClientProcess.analyzed_search(@tweet.message)
+        .map { |p| "  - #{p.url}" }.join("\n")
 
       # Creation d'une task
       if sf_existing_account
@@ -36,6 +37,10 @@ class NextWorker
           Twitter, mais la réponse du robot ne l'a pas satisfait(e). Vous
           pouvez répondre à sa question sur Twitter à cette addresse :
           #{@tweet.message_url}
+
+          Nous avons recherché dans la base de connaissance et les articles
+          suivant semblent etre en relation avec sa question :
+          #{pages}
 
           DESC
         }
@@ -50,6 +55,10 @@ class NextWorker
           est situé dans une zone proche de votre agence. Nous vous invitons à
           répondre à sa demande ou à sa remarque directement sur Twitter,
           à cette addresse: #{@tweet.message_url}
+
+          Nous avons recherché dans la base de connaissance et les articles
+          suivant semblent etre en relation avec sa question :
+          #{pages}
 
           DESC
         }

@@ -9,10 +9,7 @@ class Api::Walla
     end
 
     if response.status == 201
-      data  = JSON.parse(response.body)['tweet']
-      url   = "#{ENV['WALLA_URL']}/go/#{data['id']}"
-
-      return url
+      return Hashie::Mash.new JSON.parse(response.body)['tweet']
     end
     nil
   end

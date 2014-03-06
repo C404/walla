@@ -102,6 +102,8 @@ gem 'tire'
 
 # Sidekiq
 gem 'sidekiq'
+## Sidekiq monitoring interface requires sinatra
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 # Le meilleur des ActiveAdmin
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -109,5 +111,3 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'rest-client'
 
 gem 'hashie'
-
-#gem 'reportable', github: 'saulabs/reportable', :require => 'saulabs/reportable'

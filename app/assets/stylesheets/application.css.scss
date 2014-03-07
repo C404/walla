@@ -81,7 +81,7 @@ iframe {
 #loader #img-loader {
   position: absolute; z-index: 10000000;
   top: 40%; left: 45%;
-  background-image: url('/assets/loading.gif');
+  background-image: image-url('loading.gif');
   background-size : cover;
   background-position: center;
   width: 100px; height: 100px;  

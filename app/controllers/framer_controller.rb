@@ -1,6 +1,7 @@
 class FramerController < ApplicationController
   before_action :ip_env
-  before_action :set_tweet, expect: [:index]
+  before_action :set_tweet, except: [:stats]
+  layout 'stats_layout', only: [:stats]
 
   def index
     begin
@@ -41,6 +42,11 @@ class FramerController < ApplicationController
     puts "Should learn url #{params[:url]}"
 
     @tweet.update_attribute(:success, true)
+  end
+
+
+  def stats
+    @week = ['none', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
   end
 
   private

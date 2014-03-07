@@ -144,6 +144,13 @@ GEM
       actionpack (>= 3.0)
     geocoder (1.1.9)
     geoip (1.3.5)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.5.1)
+      actionpack (~> 4.0.0)
+      activesupport (~> 4.0.0)
+      haml (>= 3.1, < 5.0)
+      railties (~> 4.0.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -254,6 +261,8 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
+    raphaeljs-rails (2.1.2)
+      railties
     rdoc (4.1.1)
       json (~> 1.4)
     redis (3.0.6)
@@ -381,6 +390,8 @@ DEPENDENCIES
   figaro
   geocoder
   geoip
+  haml
+  haml-rails
   hashie
   jbuilder (~> 1.2)
   jquery-rails
@@ -392,6 +403,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (= 4.0.0)
+  raphaeljs-rails
   rest-client
   rspec-rails
   rvm-capistrano

@@ -1,0 +1,67 @@
+.stats#paper
+  %div{style: 'width: 1024px; margin: auto; '}
+    .menu
+      #links
+        %a{:href => "#"} Accueil 
+        %a{:href => "#this-week"} Cette semaine
+        %a{:href => "#"} Suggestions
+        %a{:href => "#"} Satisfaction
+        %a{:href => "#"} Agents contactés
+      #statslogo
+      %div{style: 'clear:both;'}
+  .content{style: 'width: 1024px; margin: auto; '}
+    .statblock
+      %h2 Représentation graphique du nombre de tweet /jour /heure via @HackAxa
+      #this-week
+        %table#for-chart{style: 'padding: 20px 20px;'}
+          %tfoot
+            %tr
+              %td  
+              - (0..24).each do |hour|
+                - if hour == 0 or hour == 24
+                  %th 00
+                - else
+                  %th= hour
+          %tbody
+            - (1..7).each do |day|
+              %tr
+                %th{scope: "row"}= @week[day]
+                - (0..22).each do |num|
+                  - if rand(num) % 2 == 0
+                    %td= (0..10).to_a.sample
+                  - else
+                    %td= (20..58).to_a.sample
+        #chart
+
+    .statblock
+      %h2 Représentation graphique des tweets cette semaine
+      #big-pie
+        #contentPie
+          #legendPie{style: 'float: left; text-align: left;'}
+            %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #69D2E7;'}
+            %span{style: 'color: #000;'} 355 Tweets ont été notés positifs
+            %br/ 
+            %br/ 
+            %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #E0E4CC;'}
+            %span{style: 'color: #000;'} 145 Tweets ont nécessités l'intervention d'un agent
+            %br/ 
+            %br/ 
+            %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #F38630;'}
+            %span{style: 'color: #000;'} 59 Tweets n'ont pas été notés
+          %canvas#myPie{width: '420', height: '400', style: 'float: right;'}
+            Get a browser !!
+          %div{style: 'clear:both;'}
+
+    .statblock
+      %h2 Représentation graphique des suggestions positives et négatives / mois
+      %br/ 
+      %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #27AE60;'}
+      %span{style: 'color: #000;'} Utilisateurs satisfaits par la réponse de @HackAxa
+      %br/ 
+      %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #34495e;;'}
+      %span{style: 'color: #000;'} Utilisateurs non satisfaits par la réponse de @HackAxa
+      %br/ 
+      %br/ 
+      #agents
+        %canvas#myChart{width: '820', height: '400'}
+          Get a browser !!

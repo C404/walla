@@ -10,6 +10,7 @@ Walla::Application.routes.draw do
   get  '/go/:id',       to: 'framer#index', as: :go
   post '/go/:id/next',  to: 'framer#next'
   post '/go/:id/learn', to: 'framer#learn'
+  get  '/admin/stats',  to: 'framer#stats'
 
   # API
   resources :tweets

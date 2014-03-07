@@ -1,7 +1,7 @@
 class FramerController < ApplicationController
   before_action :ip_env
   before_action :set_tweet, except: [:stats]
-  layout 'stats_layout', only: [:stats]
+  # layout 'stats_layout', only: [:stats]
 
   def index
     begin

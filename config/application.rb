@@ -20,6 +20,8 @@ module Walla
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
 
+    config.assets.precompile += ['stats_layout']
+
     config.autoload_paths += [
       "#{config.root}/app/classes",
       "#{config.root}/app/services"

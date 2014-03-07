@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307223958) do
+ActiveRecord::Schema.define(version: 20140307225523) do
 
   create_table "auto_responders", force: true do |t|
     t.string   "matcher"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140307223958) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "success",          default: false
-    t.integer  "status_id"
+    t.string   "status_id"
     t.integer  "answer_status_id"
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305130129) do
+ActiveRecord::Schema.define(version: 20140307223958) do
 
   create_table "auto_responders", force: true do |t|
     t.string   "matcher"

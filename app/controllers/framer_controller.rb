@@ -46,7 +46,11 @@ class FramerController < ApplicationController
 
 
   def stats
-    @week = ['none', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+    if !user_signed_in? and Rails.env != 'development'
+      redirect_to new_user_session_url(state: request.original_url)
+    else
+      @week = ['none', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+    end
   end
 
   private

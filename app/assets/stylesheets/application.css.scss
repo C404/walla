@@ -41,7 +41,7 @@ iframe {
 #header {
     position: absolute;
     z-index: 1000;
-    top: 0;
+    top: 5px;
     left: 29%;
     width: 550px;
     padding: 40px 20px;
@@ -50,30 +50,25 @@ iframe {
     font-size: 16px;
     line-height: 140%;
     color: #333;
-    background: #F0F0F0;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
+    background: #fff;
+    border-radius: 10px;
 }
 
 #header a       { color: rgb(75, 75, 75);  text-decoration: none; }
-#header a:hover { text-decoration: underline; }
+#header a:hover { text-decoration: underline;}
 
 #header input[type="submit"], button {
     border: none;
+    font-size: 14px;
     text-transform: uppercase;
-    background-color: #dedede;
-    color: #000;
+    background-color: #27AE60;
+    color: #fff;
     cursor: pointer;
 }
 
-#header input[type="submit"]:hover, button:hover {
-    background-color: #fff;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
-    font-weight: bold;
-}
+#header input[type="submit"]:hover, button:hover { background-color: #2ECC71; }
+#refused { background-color: #C0392B; }
+#refused:hover { background-color: #E74C3C; }
 
 #sidr ul li span { cursor: pointer; }
 

@@ -18,5 +18,4 @@ class TwitterFactory
       end
     end
   end
-
 end

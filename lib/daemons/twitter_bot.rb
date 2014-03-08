@@ -11,7 +11,8 @@ require File.join(root, "config", "environment")
 
 $running = true
 Signal.trap("TERM") do
-  $running = false
+  Rails.console.warn "Receiving TERM signal. Just exiting"
+  exit 42
 end
 
 while($running) do

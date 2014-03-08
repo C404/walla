@@ -26,6 +26,8 @@ class NextWorker
       pages = Salesforce::ClientProcess.analyzed_search(@tweet.message)
         .map { |p| "  - #{p.url}" }.join("\n")
 
+      hashtags = TwitterProfile.new(@tweet.account).favorite_hashtags
+
       # Creation d'une task
       if sf_existing_account
         attributes = {
@@ -41,6 +43,8 @@ class NextWorker
           Nous avons recherché dans la base de connaissance et les articles
           suivant semblent etre en relation avec sa question :
           #{pages}
+
+          Voici la liste de ses hashtags favoris: #{hashtags.join(', ')}
 
           DESC
         }
@@ -59,6 +63,8 @@ class NextWorker
           Nous avons recherché dans la base de connaissance et les articles
           suivant semblent etre en relation avec sa question :
           #{pages}
+
+          Voici la liste de ses hashtags favoris: #{hashtags}.join(', ')
 
           DESC
         }

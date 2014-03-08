@@ -12,14 +12,14 @@ $(function () {
                 strokeColor : "rgba(220,220,220,1)",
                 pointColor : "rgba(220,220,220,1)",
                 pointStrokeColor : "#fff",
-                data : [65,59,90,81,56,55,70]
+                data : [6500,5009,9000,8001,5060,5500,7000]
               },
               {
                 fillColor : "#34495e",
                 strokeColor : "rgba(151,187,205,1)",
                 pointColor : "rgba(151,187,205,1)",
                 pointStrokeColor : "#fff",
-                data : [28,48,40,19,12,27,32]
+                data : [2800,4800,4000,1090,1200,2700,3020]
               }
             ]
           }

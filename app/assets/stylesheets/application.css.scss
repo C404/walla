@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-@font-face{font-family:"gothambold";src:url("/assets/fonts/Gotham-Bold.ttf");}
+@font-face{font-family:"gothambold";src: font-url('Gotham-Bold.ttf');}
 
 html,body
 {
@@ -136,9 +136,16 @@ iframe {
 /*THIS WEEK */
 
 #this-week { background-color: #fff; padding: 10px 10px; width: 820px; border-radius: 10px; margin: auto;}
-#agents { background-color: #fff; padding: 10px 10px; width: 820px; height: 460px; border-radius: 10px; margin: auto; margin-bottom: 50px; }
+#agents { background-color: #fff; padding: 10px 10px; width: 820px; height: 460px; border-radius: 10px; margin: auto;}
 #contentPie { background-color: #fff; padding: 10px 10px; width: 820px; height: 400px; border-radius: 10px; margin: auto; }
+#hashbar{ background-color: #fff; padding: 10px 10px; width: 820px; height: 400px; border-radius: 10px; margin: auto; }
 
-#big-pie {text-align: center;}
+
+#big-pie {text-align: center; margin-bottom: 50px;}
+
+
+// PROFILES
+#profilestab {background-color: #fff; width: 100%; padding: 20px 20px; border-radius: 7px;}
+#profilestab tr td { padding-bottom:20px;}
 
 

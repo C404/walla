@@ -1,7 +1,6 @@
 class FramerController < ApplicationController
   before_action :ip_env
-  before_action :set_tweet, except: [:stats]
-  # layout 'stats_layout', only: [:stats]
+  before_action :set_tweet, except: [:stats, :profiles]
 
   def index
     begin
@@ -50,6 +49,14 @@ class FramerController < ApplicationController
       redirect_to new_user_session_url(state: request.original_url)
     else
       @week = ['none', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+    end
+  end
+
+  def profiles
+    if !user_signed_in? and Rails.env != 'development'
+      redirect_to new_user_session_url(state: request.original_url)
+    else
+      @users = Tweet.select("DISTINCT account")
     end
   end
 

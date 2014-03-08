@@ -1,0 +1,33 @@
+.stats#paper
+  %div{style: 'width: 1024px; margin: auto; '}
+    .menu
+      #links
+        =link_to "Accueil",  admin_stats_path
+        %a{:href => "#this-week"} Cette semaine
+        %a{:href => "#"} Cette année
+        %a{:href => "#"} Mots clés
+        %a{:href => "#"} Satisfaction
+        =link_to "Profils",  admin_profiles_path
+      #statslogo
+      %div{style: 'clear:both;'}
+  .content{style: 'width: 1024px; margin: auto; '}
+
+
+    %table#profilestab
+      %tbody
+        - @users.each do |user|
+          - @profile = extract_profile user
+          %tr
+            %th=raw "@#{link_to user.account, 'http://twitter.com/' + user.account}"
+            %td 
+              - @profile.favorite_hashtags.each do |tag|
+                = "- ##{tag.first} (x#{tag.last})"
+                %br/ 
+            %td
+              - @profile.favorite_users.each do |fuser|
+                = "- @#{fuser.first} (x#{fuser.last})"
+                %br/ 
+            %td Bidule
+
+          
+

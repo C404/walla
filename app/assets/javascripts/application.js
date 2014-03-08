@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require raphael
 //= require_tree .
 
@@ -67,10 +66,11 @@ $(function(){
 });
 
 
-
-
-
-
+$(function(){
+    if ($('#paper').length != 0 ) {
+     $('body').css('background-color', '#2a94d6');
+     }
+});
 
 
 

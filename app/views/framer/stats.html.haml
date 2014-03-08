@@ -2,14 +2,40 @@
   %div{style: 'width: 1024px; margin: auto; '}
     .menu
       #links
-        %a{:href => "#"} Accueil 
+        =link_to "Accueil",  admin_stats_path
         %a{:href => "#this-week"} Cette semaine
-        %a{:href => "#"} Suggestions
+        %a{:href => "#"} Cette année
+        %a{:href => "#"} Mots clés
         %a{:href => "#"} Satisfaction
-        %a{:href => "#"} Agents contactés
+        =link_to "Profils",  admin_profiles_path
       #statslogo
       %div{style: 'clear:both;'}
   .content{style: 'width: 1024px; margin: auto; '}
+
+
+    .statblock
+      %h2 Représentation graphique des suggestions positives et négatives / mois
+      %br/ 
+      #agents
+        %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #27AE60;'}
+        %span{style: 'color: #000;'} Utilisateurs satisfaits par la réponse de @HackAxa
+        %br/ 
+        %br/ 
+        %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #34495e;;'}
+        %span{style: 'color: #000;'} Utilisateurs non satisfaits par la réponse de @HackAxa
+        %br/ 
+        %br/ 
+        %canvas#myChart{width: '820', height: '400'}
+          Get a browser !!
+
+
+    .statblock
+      %h2 Représentation graphique des 6 mots clés les plus utilisés
+      #hashbar
+        %canvas#myBar{width: '820', height: '400'}
+          Get a browser !!
+
+
     .statblock
       %h2 Représentation graphique du nombre de tweet /jour /heure via @HackAxa
       #this-week
@@ -51,18 +77,3 @@
           %canvas#myPie{width: '420', height: '400', style: 'float: right;'}
             Get a browser !!
           %div{style: 'clear:both;'}
-
-    .statblock
-      %h2 Représentation graphique des suggestions positives et négatives / mois
-      %br/ 
-      #agents
-        %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #27AE60;'}
-        %span{style: 'color: #000;'} Utilisateurs satisfaits par la réponse de @HackAxa
-        %br/ 
-        %br/ 
-        %div{style: 'display: inline-block; height: 10px; width: 20px; background-color: #34495e;;'}
-        %span{style: 'color: #000;'} Utilisateurs non satisfaits par la réponse de @HackAxa
-        %br/ 
-        %br/ 
-        %canvas#myChart{width: '820', height: '400'}
-          Get a browser !!

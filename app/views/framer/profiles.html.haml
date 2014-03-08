@@ -14,20 +14,22 @@
 
 
     %table#profilestab
+      %thead
+        %tr 
+          %td Nom de l'utilisateur
+          %td HashTags favoris
+          %td Utilisateurs favoris
       %tbody
         - @users.each do |user|
-          - @profile = extract_profile user
+          - @profile = extract_profile user.account
           %tr
-            %th=raw "@#{link_to user.account, 'http://twitter.com/' + user.account}"
+            %th=raw "@#{link_to user.account, 'http://twitter.com/' + user.account, target: '_blank'} "
             %td 
               - @profile.favorite_hashtags.each do |tag|
-                = "- ##{tag.first} (x#{tag.last})"
-                %br/ 
+                =raw "##{link_to tag.first, 'http://twitter.com/search?src=typd&q=%23' + tag.first, target: '_blank'}(x#{tag.last})"
             %td
               - @profile.favorite_users.each do |fuser|
-                = "- @#{fuser.first} (x#{fuser.last})"
-                %br/ 
-            %td Bidule
+                =raw "@#{link_to fuser.first, 'http://twitter.com/' + fuser.first, target: '_blank'}(x#{fuser.last})" 
 
           
 

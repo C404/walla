@@ -2,11 +2,22 @@ class Bot::Walla < Bot::Twitter
   def should_answer_to?(event)
     mentions = event.user_mentions.map{|u| u.screen_name}
 
-    puts "Event is a reply to #{event.in_reply_to_status_id}"
+    if event.user.screen_name == me.screen_name
+      Rails.logger.warn "Bot::Walla, not answering to myself"
+      return false
+    end
+    #Rails.logger.warn "This is reply to #{event.in_reply_to_status_id} #{event.in_reply_to_status_id.class}"
+    if event.in_reply_to_status_id and Tweet.where(answer_status_id: event.in_reply_to_status_id).exists?
+      Rails.logger.warn "Bot::Walla, don't reply to my own reply"
+      return false
+    end
 
-    return false if event.user.screen_name == me.screen_name
-    return false if Tweet.where(answer_status_id: event.in_reply_to_status_id).exists?
-    return false unless mentions.include? me.screen_name
+    unless mentions.include? me.screen_name
+      Rails.logger.warn "Bot::Walla, This message isn't a message to me"
+      return false
+    end
+
+    Rails.logger.debug "Answering message: #{event.text}"
 
     true
   end
